@@ -1,0 +1,169 @@
+Last login: Thu Feb 20 21:58:45 on ttys000
+Amandas-MacBook-Air:sql-population-queries-starting 2 amandasanchez$ sqlite3 db.sqlite
+SQLite version 3.19.3 2017-06-27 16:48:08
+Enter ".help" for usage hints.
+sqlite> .schema
+CREATE TABLE population_years (
+      country STRING NOT NULL,
+      population NUMBER,
+      year NUMBER
+    );
+sqlite> SELECT DISTINCT year
+   ...> FROM population_years;
+2000
+2001
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+sqlite> SELECT MAX (population)
+   ...> FROM population_years
+   ...> WHERE country = 'Gabon'; 
+1.54526
+sqlite> SELECT DISTINCT country
+   ...> FROM population_years
+   ...> ORDER BY population DESC
+   ...> LIMIT 10; 
+China
+India
+United States
+Indonesia
+Brazil
+Pakistan
+Russia
+Bangladesh
+Japan
+Nigeria
+sqlite> SELECT DISTINCT country
+   ...> FROM population_years
+   ...> WHERE population > 100
+   ...> AND year IS 2010; 
+Mexico
+United States
+Brazil
+Russia
+Nigeria
+Bangladesh
+China
+India
+Indonesia
+Japan
+Pakistan
+sqlite> SELECT *
+   ...> FROM population_years
+   ...> WHERE country LIKE '%Islands%'; 
+Cayman Islands|0.03844|2000
+Cayman Islands|0.03962|2001
+Cayman Islands|0.0408|2002
+Cayman Islands|0.04199|2003
+Cayman Islands|0.04316|2004
+Cayman Islands|0.04434|2005
+Cayman Islands|0.04552|2006
+Cayman Islands|0.04669|2007
+Cayman Islands|0.04786|2008
+Cayman Islands|0.04904|2009
+Cayman Islands|0.05021|2010
+Falkland Islands (Islas Malvinas)|0.00285|2000
+Falkland Islands (Islas Malvinas)|0.0029|2001
+Falkland Islands (Islas Malvinas)|0.00293|2002
+Falkland Islands (Islas Malvinas)|0.00297|2003
+Falkland Islands (Islas Malvinas)|0.00297|2004
+Falkland Islands (Islas Malvinas)|0.00297|2005
+Falkland Islands (Islas Malvinas)|0.00297|2006
+Falkland Islands (Islas Malvinas)|0.00297|2007
+Falkland Islands (Islas Malvinas)|0.00314|2008
+Falkland Islands (Islas Malvinas)|0.00314|2009
+Falkland Islands (Islas Malvinas)|0.00314|2010
+Turks and Caicos Islands|0.01751|2000
+Turks and Caicos Islands|0.01813|2001
+Turks and Caicos Islands|0.01875|2002
+Turks and Caicos Islands|0.01936|2003
+Turks and Caicos Islands|0.01997|2004
+Turks and Caicos Islands|0.02057|2005
+Turks and Caicos Islands|0.02117|2006
+Turks and Caicos Islands|0.02176|2007
+Turks and Caicos Islands|0.02235|2008
+Turks and Caicos Islands|0.02294|2009
+Turks and Caicos Islands|0.02353|2010
+Virgin Islands,  U.S.|0.10864|2000
+Virgin Islands,  U.S.|0.10875|2001
+Virgin Islands,  U.S.|0.10892|2002
+Virgin Islands,  U.S.|0.10915|2003
+Virgin Islands,  U.S.|0.10935|2004
+Virgin Islands,  U.S.|0.1096|2005
+Virgin Islands,  U.S.|0.10976|2006
+Virgin Islands,  U.S.|0.10982|2007
+Virgin Islands,  U.S.|0.10983|2008
+Virgin Islands,  U.S.|0.10981|2009
+Virgin Islands,  U.S.|0.10975|2010
+Virgin Islands, British|0.02038|2000
+Virgin Islands, British|0.02084|2001
+Virgin Islands, British|0.0213|2002
+Virgin Islands, British|0.02176|2003
+Virgin Islands, British|0.02222|2004
+Virgin Islands, British|0.02268|2005
+Virgin Islands, British|0.02313|2006
+Virgin Islands, British|0.02359|2007
+Virgin Islands, British|0.02404|2008
+Virgin Islands, British|0.02449|2009
+Virgin Islands, British|0.02494|2010
+Faroe Islands|0.04579|2000
+Faroe Islands|0.04659|2001
+Faroe Islands|0.04735|2002
+Faroe Islands|0.04795|2003
+Faroe Islands|0.04829|2004
+Faroe Islands|0.04831|2005
+Faroe Islands|0.04832|2006
+Faroe Islands|0.04849|2007
+Faroe Islands|0.04867|2008
+Faroe Islands|0.04886|2009
+Faroe Islands|0.04906|2010
+Cook Islands|0.01631|2000
+Cook Islands|0.01573|2001
+Cook Islands|0.01515|2002
+Cook Islands|0.0146|2003
+Cook Islands|0.01409|2004
+Cook Islands|0.0136|2005
+Cook Islands|0.01313|2006
+Cook Islands|0.01269|2007
+Cook Islands|0.01227|2008
+Cook Islands|0.01187|2009
+Cook Islands|0.01149|2010
+Solomon Islands|0.43373|2000
+Solomon Islands|0.44591|2001
+Solomon Islands|0.45822|2002
+Solomon Islands|0.47065|2003
+Solomon Islands|0.48317|2004
+Solomon Islands|0.49575|2005
+Solomon Islands|0.50838|2006
+Solomon Islands|0.52107|2007
+Solomon Islands|0.53378|2008
+Solomon Islands|0.54649|2009
+Solomon Islands|0.5592|2010
+U.S. Pacific Islands|0.24999|2000
+U.S. Pacific Islands|0.25365|2001
+U.S. Pacific Islands|0.25739|2002
+U.S. Pacific Islands|0.26116|2003
+U.S. Pacific Islands|0.26494|2004
+U.S. Pacific Islands|0.25814|2005
+U.S. Pacific Islands|0.24957|2006
+U.S. Pacific Islands|0.24888|2007
+U.S. Pacific Islands|0.24678|2008
+U.S. Pacific Islands|0.24424|2009
+U.S. Pacific Islands|0.24221|2010
+sqlite> SELECT population
+   ...> FROM population_years
+   ...> WHERE country = 'Indonesia'
+   ...> AND year = '2000'; 
+214.67661
+sqlite> SELECT population
+   ...> FROM population_years
+   ...> WHERE country = 'Indonesia'
+   ...> AND year = '2010'; 
+242.96834
+sqlite> 
