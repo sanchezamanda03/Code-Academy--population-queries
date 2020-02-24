@@ -8,8 +8,13 @@ CREATE TABLE population_years (
       population NUMBER,
       year NUMBER
     );
+
+What years are covered by the dataset?
+
 sqlite> SELECT DISTINCT year
    ...> FROM population_years;
+
+
 2000
 2001
 2002
@@ -21,10 +26,16 @@ sqlite> SELECT DISTINCT year
 2008
 2009
 2010
+
+What is the largest population size for Gabon in the dataset?
+
 sqlite> SELECT MAX (population)
    ...> FROM population_years
    ...> WHERE country = 'Gabon'; 
 1.54526
+
+What were the 10 lowest population countries in 2005?
+
 sqlite> SELECT DISTINCT country
    ...> FROM population_years
    ...> ORDER BY population DESC
@@ -39,6 +50,9 @@ Russia
 Bangladesh
 Japan
 Nigeria
+
+What are all the distinct countries with a population of over 100 million in the year 2010?
+
 sqlite> SELECT DISTINCT country
    ...> FROM population_years
    ...> WHERE population > 100
@@ -54,6 +68,9 @@ India
 Indonesia
 Japan
 Pakistan
+
+How many countries in the dataset have the world "Islands" in their name?
+
 sqlite> SELECT *
    ...> FROM population_years
    ...> WHERE country LIKE '%Islands%'; 
@@ -156,6 +173,10 @@ U.S. Pacific Islands|0.24888|2007
 U.S. Pacific Islands|0.24678|2008
 U.S. Pacific Islands|0.24424|2009
 U.S. Pacific Islands|0.24221|2010
+
+
+What is the difference in population between 2000 and 2010 in Indonesia?
+
 sqlite> SELECT population
    ...> FROM population_years
    ...> WHERE country = 'Indonesia'
